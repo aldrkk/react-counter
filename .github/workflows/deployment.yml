@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node_version: ${{ matrix.node_version }}
-        run: |
+      - run: |
           cd /home/aldrk/react-counter
           git pull origin master
           yarn install
