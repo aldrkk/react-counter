@@ -16,8 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use node js
-      - uses: appleboy/ssh-action@master
-      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
         with:
           node-version: ${{ matrix.version }}
           host: ${{ secrets.HOST }}
