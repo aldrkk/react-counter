@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/setup-node@v3
         with:
-          node_version: ${{ matrix.node_version }}
+          node-version: ${{ matrix.node_version }}
       - run: |
           cd /home/aldrk/react-counter
           git pull origin master
