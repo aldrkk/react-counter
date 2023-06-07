@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+nvm use default
 
 echo "Deployment started..."
 
