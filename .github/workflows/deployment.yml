@@ -9,9 +9,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [18]
     steps:
       - uses: actions/setup-node@v3
-        node-version: '18.16.0'
+        node-version: ${{ matrix.version }}
       - uses: actions/checkout@v3
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
