@@ -2,7 +2,7 @@
 set -e
 nvm use default
 
-echo "Deployment started..."
+echo "Deployment started now..."
 
 git pull origin master
 echo "Starting to get new changes"
