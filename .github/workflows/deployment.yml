@@ -7,38 +7,15 @@ on:
     branches: ["master"]
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-20.04
-
-    strategy:
-      matrix:
-        node-version: [18.16.0]
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: yarn install
-    - run: yarn build
-
   deploy:
-    needs: build-and-test
-    runs-on: ubuntu-20.04
-
-    strategy:
-      matrix:
-        node: [18.16.0]
-
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/checkout@v3
+      - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
-          script: cd /home/aldrk/react-counter && git checkout .
+          key: ${{ secrets.SSH_KEY }}
+          script: "cd /var/www/project_folder_name && ./.scripts/deploy.sh"
