@@ -1,3 +1,7 @@
 .idea/
 node_modules
 dist
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
