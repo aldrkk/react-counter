@@ -12,10 +12,10 @@ jobs:
     strategy:
       matrix:
         version: [18]
+
     steps:
-      - uses: actions/setup-node@v3
-        node-version: ${{ matrix.version }}
       - uses: actions/checkout@v3
+        node-version: ${{ matrix.version }}
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
