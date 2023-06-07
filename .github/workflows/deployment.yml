@@ -18,9 +18,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          script:
-          - run: "cd /home/aldrk/react-counter"
-          - run: "nvm use default"
-          - run: "git pull"
-          - run: "yarn install"
-          - run: "yarn build"
+          script: "cd /home/aldrk/react-counter" && "nvm use default" && "git pull" && "yarn install" && "yarn build"
