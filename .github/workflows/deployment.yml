@@ -1,0 +1,23 @@
+name: React counter deploy
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branch: [ master ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/setup-node@v3
+        with:
+          node_version: ${{ matrix.node_version }}
+        run: |
+          cd /home/aldrk/react-counter
+          git pull origin master
+          yarn install
+          yarn build
+          echo "Successfully deployed"
